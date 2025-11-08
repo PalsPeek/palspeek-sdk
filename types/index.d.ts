@@ -6,6 +6,7 @@ export type { errors_HTTPError } from './models/errors_HTTPError';
 export type { handler_GroupCreateRequest } from './models/handler_GroupCreateRequest';
 export type { handler_LoginRequest } from './models/handler_LoginRequest';
 export type { handler_PasswordChangeRequest } from './models/handler_PasswordChangeRequest';
+export type { handler_PostCreateRequest } from './models/handler_PostCreateRequest';
 export type { handler_SignupRequest } from './models/handler_SignupRequest';
 export { handler_UpdateProfileRequest } from './models/handler_UpdateProfileRequest';
 export type { models_FriendRequest } from './models/models_FriendRequest';

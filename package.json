@@ -6,7 +6,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"No tests yet\" && exit 0",
-    "build": "tsc --declaration --emitDeclarationOnly --outDir ./types"
+    "build": "openapi -i ../api/docs/swagger.json -c axios --useOptions -o ./src && tsc --declaration --emitDeclarationOnly --outDir ./types"
   },
   "keywords": [
     "palspeek",
