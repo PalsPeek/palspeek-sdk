@@ -1,6 +1,6 @@
 {
   "name": "@palspeek/palspeek-client",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Auto-generated OpenAPI client for the Palspeek API",
   "main": "src/index.ts",
   "types": "types/index.d.ts",

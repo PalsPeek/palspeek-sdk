@@ -5,57 +5,84 @@ export declare class GroupsService {
     /**
      * Create a new group
      * Creates a group with the given name, description, and privacy settings. The group will be associated with the authenticated user.
-     * @param group Group creation payload
      * @returns models_Group Created
      * @throws ApiError
      */
-    static postGroups(group: handler_GroupCreateRequest): CancelablePromise<models_Group>;
+    static postApiV1Groups({ group, }: {
+        /**
+         * Group creation payload
+         */
+        group: handler_GroupCreateRequest;
+    }): CancelablePromise<models_Group>;
     /**
      * List all public groups
      * Returns a paginated list of public groups
-     * @param page Page number
-     * @param limit Items per page
      * @returns any OK
      * @throws ApiError
      */
-    static getGroupsPublic(page?: number, limit?: number): CancelablePromise<any>;
+    static getApiV1GroupsPublic({ page, limit, }: {
+        /**
+         * Page number
+         */
+        page?: number;
+        /**
+         * Items per page
+         */
+        limit?: number;
+    }): CancelablePromise<any>;
     /**
      * Get a group by ID
      * Returns details of a group by its ID
-     * @param id Group ID
      * @returns models_Group OK
      * @throws ApiError
      */
-    static getGroups(id: string): CancelablePromise<models_Group>;
+    static getApiV1Groups({ id, }: {
+        /**
+         * Group ID
+         */
+        id: string;
+    }): CancelablePromise<models_Group>;
     /**
      * Delete a group
      * Deletes a group owned by the authenticated user
-     * @param id Group ID
      * @returns string Group deleted successfully
      * @throws ApiError
      */
-    static deleteGroups(id: string): CancelablePromise<Record<string, string>>;
+    static deleteApiV1Groups({ id, }: {
+        /**
+         * Group ID
+         */
+        id: string;
+    }): CancelablePromise<Record<string, string>>;
     /**
      * Invite a user to a private/secret group
      * [TODO:] Only the owner of the group can invite users
      * @returns void
      * @throws ApiError
      */
-    static postGroupsInvite(): CancelablePromise<void>;
+    static postApiV1GroupsInvite(): CancelablePromise<void>;
     /**
      * Join a public group
      * Adds the authenticated user to the group members if the group is public
-     * @param id Group ID
      * @returns string Successfully joined the group
      * @throws ApiError
      */
-    static postGroupsJoin(id: string): CancelablePromise<Record<string, string>>;
+    static postApiV1GroupsJoin({ id, }: {
+        /**
+         * Group ID
+         */
+        id: string;
+    }): CancelablePromise<Record<string, string>>;
     /**
      * Leave a group
      * Removes the authenticated user from the group
-     * @param id Group ID
      * @returns string Successfully left the group
      * @throws ApiError
      */
-    static postGroupsLeave(id: string): CancelablePromise<Record<string, string>>;
+    static postApiV1GroupsLeave({ id, }: {
+        /**
+         * Group ID
+         */
+        id: string;
+    }): CancelablePromise<Record<string, string>>;
 }

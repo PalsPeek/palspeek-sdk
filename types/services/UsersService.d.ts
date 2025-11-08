@@ -8,21 +8,29 @@ export declare class UsersService {
      * @returns models_User OK
      * @throws ApiError
      */
-    static getUsersMe(): CancelablePromise<models_User>;
+    static getApiV1UsersMe(): CancelablePromise<models_User>;
     /**
      * Update current user profile
      * Updates optional fields in the user's profile
-     * @param profile Profile update payload
      * @returns models_User OK
      * @throws ApiError
      */
-    static patchUsersMe(profile: handler_UpdateProfileRequest): CancelablePromise<models_User>;
+    static patchApiV1UsersMe({ profile, }: {
+        /**
+         * Profile update payload
+         */
+        profile: handler_UpdateProfileRequest;
+    }): CancelablePromise<models_User>;
     /**
      * Get user by username
      * Returns user public profile including public groups and friends
-     * @param username Username
      * @returns models_User OK
      * @throws ApiError
      */
-    static getUsers(username: string): CancelablePromise<models_User>;
+    static getApiV1Users({ username, }: {
+        /**
+         * Username
+         */
+        username: string;
+    }): CancelablePromise<models_User>;
 }
