@@ -11,16 +11,20 @@ export class GroupsService {
     /**
      * Create a new group
      * Creates a group with the given name, description, and privacy settings. The group will be associated with the authenticated user.
-     * @param group Group creation payload
      * @returns models_Group Created
      * @throws ApiError
      */
-    public static postGroups(
+    public static postApiV1Groups({
+        group,
+    }: {
+        /**
+         * Group creation payload
+         */
         group: handler_GroupCreateRequest,
-    ): CancelablePromise<models_Group> {
+    }): CancelablePromise<models_Group> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/groups',
+            url: '/api/v1/groups',
             body: group,
             errors: {
                 400: `Invalid input or validation failed`,
@@ -33,18 +37,25 @@ export class GroupsService {
     /**
      * List all public groups
      * Returns a paginated list of public groups
-     * @param page Page number
-     * @param limit Items per page
      * @returns any OK
      * @throws ApiError
      */
-    public static getGroupsPublic(
+    public static getApiV1GroupsPublic({
+        page,
+        limit,
+    }: {
+        /**
+         * Page number
+         */
         page?: number,
+        /**
+         * Items per page
+         */
         limit?: number,
-    ): CancelablePromise<any> {
+    }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/groups/public',
+            url: '/api/v1/groups/public',
             query: {
                 'page': page,
                 'limit': limit,
@@ -58,16 +69,20 @@ export class GroupsService {
     /**
      * Get a group by ID
      * Returns details of a group by its ID
-     * @param id Group ID
      * @returns models_Group OK
      * @throws ApiError
      */
-    public static getGroups(
+    public static getApiV1Groups({
+        id,
+    }: {
+        /**
+         * Group ID
+         */
         id: string,
-    ): CancelablePromise<models_Group> {
+    }): CancelablePromise<models_Group> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/groups/{id}',
+            url: '/api/v1/groups/{id}',
             path: {
                 'id': id,
             },
@@ -82,16 +97,20 @@ export class GroupsService {
     /**
      * Delete a group
      * Deletes a group owned by the authenticated user
-     * @param id Group ID
      * @returns string Group deleted successfully
      * @throws ApiError
      */
-    public static deleteGroups(
+    public static deleteApiV1Groups({
+        id,
+    }: {
+        /**
+         * Group ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'DELETE',
-            url: '/groups/{id}',
+            url: '/api/v1/groups/{id}',
             path: {
                 'id': id,
             },
@@ -110,25 +129,29 @@ export class GroupsService {
      * @returns void
      * @throws ApiError
      */
-    public static postGroupsInvite(): CancelablePromise<void> {
+    public static postApiV1GroupsInvite(): CancelablePromise<void> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/groups/{id}/invite/{username}',
+            url: '/api/v1/groups/{id}/invite/{username}',
         });
     }
     /**
      * Join a public group
      * Adds the authenticated user to the group members if the group is public
-     * @param id Group ID
      * @returns string Successfully joined the group
      * @throws ApiError
      */
-    public static postGroupsJoin(
+    public static postApiV1GroupsJoin({
+        id,
+    }: {
+        /**
+         * Group ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/groups/{id}/join',
+            url: '/api/v1/groups/{id}/join',
             path: {
                 'id': id,
             },
@@ -145,16 +168,20 @@ export class GroupsService {
     /**
      * Leave a group
      * Removes the authenticated user from the group
-     * @param id Group ID
      * @returns string Successfully left the group
      * @throws ApiError
      */
-    public static postGroupsLeave(
+    public static postApiV1GroupsLeave({
+        id,
+    }: {
+        /**
+         * Group ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/groups/{id}/leave',
+            url: '/api/v1/groups/{id}/leave',
             path: {
                 'id': id,
             },

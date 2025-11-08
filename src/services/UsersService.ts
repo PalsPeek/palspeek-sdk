@@ -14,10 +14,10 @@ export class UsersService {
      * @returns models_User OK
      * @throws ApiError
      */
-    public static getUsersMe(): CancelablePromise<models_User> {
+    public static getApiV1UsersMe(): CancelablePromise<models_User> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/users/me',
+            url: '/api/v1/users/me',
             errors: {
                 401: `Unauthorized`,
             },
@@ -26,16 +26,20 @@ export class UsersService {
     /**
      * Update current user profile
      * Updates optional fields in the user's profile
-     * @param profile Profile update payload
      * @returns models_User OK
      * @throws ApiError
      */
-    public static patchUsersMe(
+    public static patchApiV1UsersMe({
+        profile,
+    }: {
+        /**
+         * Profile update payload
+         */
         profile: handler_UpdateProfileRequest,
-    ): CancelablePromise<models_User> {
+    }): CancelablePromise<models_User> {
         return __request(OpenAPI, {
             method: 'PATCH',
-            url: '/users/me',
+            url: '/api/v1/users/me',
             body: profile,
             errors: {
                 400: `Invalid input`,
@@ -48,16 +52,20 @@ export class UsersService {
     /**
      * Get user by username
      * Returns user public profile including public groups and friends
-     * @param username Username
      * @returns models_User OK
      * @throws ApiError
      */
-    public static getUsers(
+    public static getApiV1Users({
+        username,
+    }: {
+        /**
+         * Username
+         */
         username: string,
-    ): CancelablePromise<models_User> {
+    }): CancelablePromise<models_User> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/users/{username}',
+            url: '/api/v1/users/{username}',
             path: {
                 'username': username,
             },

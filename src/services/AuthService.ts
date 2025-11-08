@@ -12,13 +12,17 @@ export class AuthService {
     /**
      * Change current user password
      * Changes the password of the authenticated user
-     * @param password Old and new password
      * @returns string Password changed successfully
      * @throws ApiError
      */
-    public static postAuthChangePassword(
+    public static postAuthChangePassword({
+        password,
+    }: {
+        /**
+         * Old and new password
+         */
         password: handler_PasswordChangeRequest,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/auth/change-password',
@@ -35,13 +39,17 @@ export class AuthService {
     /**
      * Authenticate user and return JWT
      * Logs in a user and returns a JWT token with basic user info
-     * @param credentials Login credentials
      * @returns any JWT and user info
      * @throws ApiError
      */
-    public static postAuthLogin(
+    public static postAuthLogin({
+        credentials,
+    }: {
+        /**
+         * Login credentials
+         */
         credentials: handler_LoginRequest,
-    ): CancelablePromise<any> {
+    }): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/auth/login',
@@ -56,17 +64,21 @@ export class AuthService {
     /**
      * Register a new user
      * Creates a user account with username, email, and password
-     * @param credentials User registration payload
      * @returns string User created successfully
      * @throws ApiError
      */
-    public static postAuthSignup(
-        credentials: handler_SignupRequest,
-    ): CancelablePromise<Record<string, string>> {
+    public static postAuthSignup({
+        user,
+    }: {
+        /**
+         * User registration payload
+         */
+        user: handler_SignupRequest,
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/auth/signup',
-            body: credentials,
+            body: user,
             errors: {
                 400: `Invalid input`,
                 409: `Username or email already exists`,

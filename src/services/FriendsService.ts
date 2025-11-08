@@ -13,24 +13,28 @@ export class FriendsService {
      * @returns models_User OK
      * @throws ApiError
      */
-    public static getFriends(): CancelablePromise<Array<models_User>> {
+    public static getApiV1Friends(): CancelablePromise<Array<models_User>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/friends',
+            url: '/api/v1/friends',
         });
     }
     /**
      * Accept a friend request
-     * @param id Request ID
      * @returns string OK
      * @throws ApiError
      */
-    public static postFriendsAccept(
+    public static postApiV1FriendsAccept({
+        id,
+    }: {
+        /**
+         * Request ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/friends/accept/{id}',
+            url: '/api/v1/friends/accept/{id}',
             path: {
                 'id': id,
             },
@@ -38,16 +42,20 @@ export class FriendsService {
     }
     /**
      * Reject a friend request
-     * @param id Request ID
      * @returns string OK
      * @throws ApiError
      */
-    public static postFriendsReject(
+    public static postApiV1FriendsReject({
+        id,
+    }: {
+        /**
+         * Request ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/friends/reject/{id}',
+            url: '/api/v1/friends/reject/{id}',
             path: {
                 'id': id,
             },
@@ -55,16 +63,20 @@ export class FriendsService {
     }
     /**
      * Remove a friend
-     * @param id Friend User ID
      * @returns string OK
      * @throws ApiError
      */
-    public static deleteFriendsRemove(
+    public static deleteApiV1FriendsRemove({
+        id,
+    }: {
+        /**
+         * Friend User ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'DELETE',
-            url: '/friends/remove/{id}',
+            url: '/api/v1/friends/remove/{id}',
             path: {
                 'id': id,
             },
@@ -72,16 +84,20 @@ export class FriendsService {
     }
     /**
      * Send a friend request
-     * @param id Receiver User ID
      * @returns string OK
      * @throws ApiError
      */
-    public static postFriendsRequest(
+    public static postApiV1FriendsRequest({
+        id,
+    }: {
+        /**
+         * Receiver User ID
+         */
         id: string,
-    ): CancelablePromise<Record<string, string>> {
+    }): CancelablePromise<Record<string, string>> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/friends/request/{id}',
+            url: '/api/v1/friends/request/{id}',
             path: {
                 'id': id,
             },
@@ -99,10 +115,10 @@ export class FriendsService {
      * @returns models_FriendRequest OK
      * @throws ApiError
      */
-    public static getFriendsRequests(): CancelablePromise<Array<models_FriendRequest>> {
+    public static getApiV1FriendsRequests(): CancelablePromise<Array<models_FriendRequest>> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/friends/requests',
+            url: '/api/v1/friends/requests',
             errors: {
                 401: `Unauthorized`,
                 500: `Internal Server Error`,
