@@ -2,24 +2,17 @@
   "name": "@palspeek/palspeek-client",
   "version": "1.0.0",
   "description": "Auto-generated OpenAPI client for the Palspeek API",
-  "main": "./dist/index.global.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.global.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+  "main": "src/index.ts",
+  "types": "types/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "echo \"No tests yet\" && exit 0",
+    "build": "tsc --declaration --emitDeclarationOnly --outDir ./types"
   },
-  "keywords": ["palspeek", "client", "openapi"],
+  "keywords": [
+    "palspeek",
+    "client",
+    "openapi"
+  ],
   "author": "Redson",
   "license": "ISC",
   "type": "module",
@@ -28,8 +21,9 @@
     "form-data": "^4.0.4"
   },
   "devDependencies": {
+    "@types/form-data": "^2.5.2",
+    "@types/node": "^24.10.0",
     "openapi-typescript-codegen": "^0.29.0",
-    "tsup": "^8.5.0",
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@10.17.0"
